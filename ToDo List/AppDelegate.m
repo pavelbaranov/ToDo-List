@@ -19,7 +19,7 @@
     // Override point for customization after application launch.
     
     if([application respondsToSelector:@selector(registerUserNotificationSettings:)])
-    {
+    {//sdsdsdsdsd
         UIUserNotificationType userNotification=(UIUserNotificationTypeAlert| UIUserNotificationTypeBadge|UIUserNotificationTypeSound);
         UIUserNotificationSettings * settings=[UIUserNotificationSettings settingsForTypes:userNotification categories:nil];
         [application registerUserNotificationSettings:settings];
