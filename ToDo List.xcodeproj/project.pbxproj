@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E95E32371D380DA6000539AD /* PersistanceFacade.m in Sources */ = {isa = PBXBuildFile; fileRef = E95E32361D380DA6000539AD /* PersistanceFacade.m */; };
+		E95E323A1D380E66000539AD /* MyEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = E95E32391D380E66000539AD /* MyEvent.m */; };
+		E95E323E1D381691000539AD /* RootVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E95E323D1D381691000539AD /* RootVC.m */; };
 		E977F6871D2A98E60010CDA3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E977F6861D2A98E60010CDA3 /* main.m */; };
 		E977F68A1D2A98E60010CDA3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E977F6891D2A98E60010CDA3 /* AppDelegate.m */; };
 		E977F68D1D2A98E60010CDA3 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E977F68C1D2A98E60010CDA3 /* DetailViewController.m */; };
@@ -35,6 +38,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E95E32351D380DA6000539AD /* PersistanceFacade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersistanceFacade.h; sourceTree = "<group>"; };
+		E95E32361D380DA6000539AD /* PersistanceFacade.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersistanceFacade.m; sourceTree = "<group>"; };
+		E95E32381D380E66000539AD /* MyEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyEvent.h; sourceTree = "<group>"; };
+		E95E32391D380E66000539AD /* MyEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyEvent.m; sourceTree = "<group>"; };
+		E95E323C1D381691000539AD /* RootVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootVC.h; sourceTree = "<group>"; };
+		E95E323D1D381691000539AD /* RootVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootVC.m; sourceTree = "<group>"; };
 		E977F6821D2A98E60010CDA3 /* ToDo List.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ToDo List.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E977F6861D2A98E60010CDA3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E977F6881D2A98E60010CDA3 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -78,6 +87,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E95E32341D380D78000539AD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E95E32351D380DA6000539AD /* PersistanceFacade.h */,
+				E95E32361D380DA6000539AD /* PersistanceFacade.m */,
+				E95E32381D380E66000539AD /* MyEvent.h */,
+				E95E32391D380E66000539AD /* MyEvent.m */,
+			);
+			name = Model;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		E95E323B1D3810BB000539AD /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				E977F68B1D2A98E60010CDA3 /* DetailViewController.h */,
+				E977F68C1D2A98E60010CDA3 /* DetailViewController.m */,
+				E95E323C1D381691000539AD /* RootVC.h */,
+				E95E323D1D381691000539AD /* RootVC.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
 		E977F6791D2A98E60010CDA3 = {
 			isa = PBXGroup;
 			children = (
@@ -101,10 +133,10 @@
 		E977F6841D2A98E60010CDA3 /* ToDo List */ = {
 			isa = PBXGroup;
 			children = (
+				E95E32341D380D78000539AD /* Model */,
+				E95E323B1D3810BB000539AD /* Controller */,
 				E977F6881D2A98E60010CDA3 /* AppDelegate.h */,
 				E977F6891D2A98E60010CDA3 /* AppDelegate.m */,
-				E977F68B1D2A98E60010CDA3 /* DetailViewController.h */,
-				E977F68C1D2A98E60010CDA3 /* DetailViewController.m */,
 				E977F68E1D2A98E60010CDA3 /* Main.storyboard */,
 				E977F6911D2A98E60010CDA3 /* Assets.xcassets */,
 				E977F6931D2A98E60010CDA3 /* LaunchScreen.storyboard */,
@@ -270,9 +302,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E95E323E1D381691000539AD /* RootVC.m in Sources */,
 				E977F68D1D2A98E60010CDA3 /* DetailViewController.m in Sources */,
+				E95E323A1D380E66000539AD /* MyEvent.m in Sources */,
 				E977F68A1D2A98E60010CDA3 /* AppDelegate.m in Sources */,
 				E977F6871D2A98E60010CDA3 /* main.m in Sources */,
+				E95E32371D380DA6000539AD /* PersistanceFacade.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

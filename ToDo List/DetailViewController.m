@@ -7,11 +7,14 @@
 //
 
 #import "DetailViewController.h"
+#import "MyEvent.h"
+#import "PersistanceFacade.h"
 
 @interface DetailViewController ()<UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *textField;
 @property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
 @property (weak, nonatomic) IBOutlet UIButton *buttonSave;
+
 
 
 @end
@@ -31,7 +34,15 @@
     
     UITapGestureRecognizer * handleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleEndEditing)];
     
+    
+    
     [self.view addGestureRecognizer:handleTap];
+    
+    NSLog(@"view did load");
+}
+
+- (void)dealloc {
+    NSLog(@"dealloc");
 }
 
 - (void)didReceiveMemoryWarning {
@@ -48,17 +59,43 @@
 }
 
 -(void) save {
+    if (self.textField.text.length > 0){
+    MyEvent* event = [MyEvent new];
+    event.name = self.textField.text;
+    event.date = self.datePicker.date;
     
-    NSString * eventInfo=self.textField.text;
     
-    NSDateFormatter * formater=[[NSDateFormatter alloc]init];
-    formater.dateFormat=@"HH:mm dd.MMMM.yyyy";
+    NSDictionary * dict=[[NSDictionary alloc] initWithObjectsAndKeys:event.name,@"event.name",event.date ,@"event.date", nil];
     
-    NSString * eventDate=[formater stringFromDate:self.eventDate];
+    NSDate *currentDate = [NSDate date];
+    NSLog(@"%@", currentDate);
     
-    NSDictionary * dict=[[NSDictionary alloc] initWithObjectsAndKeys: eventInfo, @"eventInfo", eventDate,@"eventDate", nil];
+    [[PersistanceFacade sharedManager]addEvent:event];
     
-    NSLog(@"save");
+    UILocalNotification * notification =[UILocalNotification new];
+    notification.userInfo=dict;
+    notification.timeZone=[NSTimeZone defaultTimeZone];
+    notification.fireDate=event.date;
+    notification.alertBody=self.textField.text;
+    notification.applicationIconBadgeNumber=1;
+    notification.soundName=UILocalNotificationDefaultSoundName;
+    
+    [[UIApplication sharedApplication] scheduleLocalNotification:notification];
+    }
+   else
+   {
+       UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Внимание"
+                                                                     message:@"Введите текст напоминания."
+                                                              preferredStyle:UIAlertControllerStyleAlert];
+       
+       UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                             handler:^(UIAlertAction * action) {}];
+       
+       [alert addAction:defaultAction];
+       [self presentViewController:alert animated:YES completion:nil];
+       
+       
+    }
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField;              // called when 'return' key pressed. return NO to ignore.
@@ -70,4 +107,7 @@
  
     return YES;
 }
+
+
+
 @end
